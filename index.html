@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMRS | Sistem Rawat Inap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">✚</div>
+            <div>
+                <h2>SIMRS</h2>
+                <small>Hospital Management</small>
+            </div>
+        </div>
+
+        <div class="menu-label">MENU UTAMA</div>
+
+        <nav>
+            <a href="#dashboard" class="menu-link active">
+                <span>▦</span> Dashboard
+            </a>
+            <a href="#pendaftaran" class="menu-link">
+                <span>＋</span> Pendaftaran Pasien
+            </a>
+            <a href="#data-pasien" class="menu-link">
+                <span>♙</span> Data Pasien
+            </a>
+            <a href="#rawat-inap" class="menu-link">
+                <span>▣</span> Rawat Inap
+            </a>
+            <a href="#data-kamar" class="menu-link">
+                <span>▤</span> Data Kamar
+            </a>
+            <a href="#data-dokter" class="menu-link">
+                <span>⚕</span> Data Dokter
+            </a>
+            <a href="#laporan" class="menu-link">
+                <span>▥</span> Laporan
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="online-dot"></div>
+            <div>
+                <strong>Sistem Aktif</strong>
+                <small>Versi demonstrasi</small>
+            </div>
+        </div>
+    </aside>
+
+    <!-- KONTEN -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Sistem Informasi Rawat Inap</h1>
+                <p>Selamat datang di dashboard SIMRS MINI HOSPITAL STIKES FATIMA PAREPARE,ADMINKES TK 2</p>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Petugas Sistem</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Ringkasan informasi pelayanan rawat inap</p>
+                </div>
+                <span class="date-label" id="tanggalSekarang"></span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="stat-icon">♙</div>
+                    <p>Total Pasien</p>
+                    <h3 id="totalPasien">0</h3>
+                    <small>Pasien terdaftar</small>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-icon">✚</div>
+                    <p>Pasien Dirawat</p>
+                    <h3 id="pasienDirawat">0</h3>
+                    <small>Sedang menjalani rawat inap</small>
+                </div>
+
+                <div class="stat-card orange">
+                    <div class="stat-icon">↗</div>
+                    <p>Pasien Keluar</p>
+                    <h3 id="pasienKeluar">0</h3>
+                    <small>Sudah selesai dirawat</small>
+                </div>
+
+                <div class="stat-card purple">
+                    <div class="stat-icon">▣</div>
+                    <p>Kamar Tersedia</p>
+                    <h3 id="kamarTersedia">0</h3>
+                    <small>Kamar masih memiliki tempat</small>
+                </div>
+            </div>
+
+            <div class="welcome-card">
+                <div>
+                    <h3>Selamat Datang di SIMRS</h3>
+                    <p>
+                        Kelola pendaftaran pasien, pelayanan rawat inap,
+                        data kamar, dokter, dan laporan melalui satu sistem.
+                    </p>
+                </div>
+                <div class="welcome-symbol">✚</div>
+            </div>
+        </section>
+
+        <!-- PENDAFTARAN -->
+        <section id="pendaftaran" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Pendaftaran Pasien Baru</h2>
+                    <p>Masukkan identitas pasien dengan lengkap.</p>
+                </div>
+            </div>
+
+            <form id="formPasien" class="form-grid">
+
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="nama"
+                           placeholder="Masukkan nama pasien" required>
+                </div>
+
+                <div class="form-group">
+                    <label>NIK</label>
+                    <input type="text" id="nik"
+                           maxlength="16" inputmode="numeric"
+                           pattern="[0-9]{16}"
+                           placeholder="16 digit NIK" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" id="tanggalLahir" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select id="jenisKelamin" required>
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nomor Telepon</label>
+                    <input type="tel" id="telepon"
+                           placeholder="Masukkan nomor telepon" required>
+                </div>
+
+                <div class="form-group full">
+                    <label>Alamat</label>
+                    <textarea id="alamat"
+                              placeholder="Masukkan alamat pasien"
+                              required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn-secondary">Reset</button>
+                    <button type="submit" class="btn-primary">
+                        + Simpan Pasien
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- DATA PASIEN -->
+        <section id="data-pasien" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Data Pasien</h2>
+                    <p>Daftar pasien yang telah terdaftar dalam sistem.</p>
+                </div>
+            </div>
+
+            <input type="search" id="cariPasien"
+                   class="search-input"
+                   placeholder="Cari nama atau nomor rekam medis...">
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. RM</th>
+                            <th>Nama Pasien</th>
+                            <th>NIK</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Telepon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelPasien"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- RAWAT INAP -->
+        <section id="rawat-inap" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Pendaftaran Rawat Inap</h2>
+                    <p>Catat pasien yang akan menjalani rawat inap.</p>
+                </div>
+            </div>
+
+            <form id="formRawat" class="form-grid">
+
+                <div class="form-group">
+                    <label>Pilih Pasien</label>
+                    <select id="pilihPasien" required>
+                        <option value="">Pilih pasien</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Pilih Kamar</label>
+                    <select id="pilihKamar" required>
+                        <option value="">Pilih kamar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Dokter Penanggung Jawab</label>
+                    <select id="pilihDokter" required>
+                        <option value="">Pilih dokter</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Masuk</label>
+                    <input type="date" id="tanggalMasuk" required>
+                </div>
+
+                <div class="form-group full">
+                    <label>Diagnosis Awal</label>
+                    <textarea id="diagnosis"
+                              placeholder="Masukkan diagnosis dari tenaga medis"
+                              required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn-secondary">Reset</button>
+                    <button type="submit" class="btn-primary">
+                        + Simpan Rawat Inap
+                    </button>
+                </div>
+            </form>
+
+            <div class="subheading">
+                <h3>Daftar Pasien Rawat Inap</h3>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. RM</th>
+                            <th>Nama Pasien</th>
+                            <th>Kamar</th>
+                            <th>Dokter</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelRawat"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- KAMAR -->
+        <section id="data-kamar" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Data Kamar</h2>
+                    <p>Informasi kapasitas dan ketersediaan kamar.</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nomor Kamar</th>
+                            <th>Kelas Kamar</th>
+                            <th>Kapasitas</th>
+                            <th>Terisi</th>
+                            <th>Ketersediaan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelKamar"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- DOKTER -->
+        <section id="data-dokter" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Data Dokter</h2>
+                    <p>Daftar dokter penanggung jawab rawat inap.</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Dokter</th>
+                            <th>Nama Dokter</th>
+                            <th>Spesialisasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelDokter"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- LAPORAN -->
+        <section id="laporan" class="page-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Laporan Rawat Inap</h2>
+                    <p>Ringkasan riwayat pasien masuk dan keluar.</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. RM</th>
+                            <th>Nama Pasien</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Tanggal Keluar</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelLaporan"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <p>SIMRS | Sistem Informasi Manajemen Rumah Sakit</p>
+            <small>Prototipe pembelajaran rawat inap</small>
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
